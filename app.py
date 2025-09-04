@@ -1,5 +1,6 @@
 from flask import Flask
 from routes.maternal import maternal_bp
+import os
 
 def create_app():
     app = Flask(__name__)
@@ -16,11 +17,10 @@ def create_app():
 
     return app
 
-if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+
+# 👇 expose the app at module level for Gunicorn
+app = create_app()
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))  # Render sets $PORT dynamically
     app.run(host="0.0.0.0", port=port, debug=True)
