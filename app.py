@@ -1,5 +1,6 @@
 from flask import Flask
 from routes.maternal import maternal_bp
+from routes.cardiovascular import cardiovascular_bp
 import os
 
 def create_app():
@@ -7,6 +8,9 @@ def create_app():
 
     # Register maternal routes
     app.register_blueprint(maternal_bp, url_prefix="/api/maternal")
+    
+    # Register cardiovascular routes
+    app.register_blueprint(cardiovascular_bp, url_prefix="/api/cardiovascular")
 
     @app.route("/", methods=["GET"])
     def home():
