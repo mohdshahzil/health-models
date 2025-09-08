@@ -1,6 +1,8 @@
 from flask import Flask
 from routes.maternal import maternal_bp
 from routes.cardiovascular import cardiovascular_bp
+from routes.glucose import glucose_bp
+from swagger_ui import create_swagger_ui
 import os
 
 def create_app():
@@ -11,13 +13,27 @@ def create_app():
     
     # Register cardiovascular routes
     app.register_blueprint(cardiovascular_bp, url_prefix="/api/cardiovascular")
+    
+    # Register glucose routes
+    app.register_blueprint(glucose_bp, url_prefix="/api/glucose")
+
+    # Add Swagger UI documentation
+    create_swagger_ui(app)
 
     @app.route("/", methods=["GET"])
     def home():
         """
         Root endpoint to verify API is running.
         """
-        return {"message": "Health Models API is running!"}
+        return {
+            "message": "Health Models API is running!",
+            "documentation": "/docs/",
+            "endpoints": {
+                "maternal": "/api/maternal",
+                "cardiovascular": "/api/cardiovascular", 
+                "glucose": "/api/glucose"
+            }
+        }
 
     return app
 

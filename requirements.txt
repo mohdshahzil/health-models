@@ -1,7 +1,10 @@
 flask
+flask-restx
 joblib
 scikit-learn==1.6.1
 pandas
 numpy
 shap
 gunicorn
+torch
+requests
