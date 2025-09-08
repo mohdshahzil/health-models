@@ -61,11 +61,11 @@ test_dataset.csv
 # Jupyter Notebooks
 .ipynb_checkpoints/
 
-# Model files (large files)
-*.pth
-*.pkl
-*.h5
-*.hdf5
+# Model files - allowing all model files since they're not huge
+# *.pth
+# *.pkl
+# *.h5
+# *.hdf5
 
 # Data files
 *.csv
