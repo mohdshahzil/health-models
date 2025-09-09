@@ -310,6 +310,3 @@ If cardiovascular model files are missing, a demo model is created at runtime wi
 - `GET /health` returns status, timestamp, and service availability
 
 ---
-
-## License
-Specify your license here (e.g., MIT).
