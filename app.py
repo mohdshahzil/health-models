@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from routes.maternal import maternal_bp
 from routes.cardiovascular import cardiovascular_bp
 from routes.glucose import glucose_bp
@@ -8,6 +9,8 @@ from datetime import datetime
 
 def create_app():
     app = Flask(__name__)
+    # Enable CORS for all routes (allow all origins)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     # Register maternal routes
     app.register_blueprint(maternal_bp, url_prefix="/api/maternal")
